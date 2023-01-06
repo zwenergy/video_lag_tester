@@ -3,7 +3,7 @@
 
 module lagtester(
     input clock,
-
+    input button,
     
     input SENSOR,
 
@@ -35,9 +35,7 @@ module lagtester(
     wire hpd_detected;
 
 wire clk_serial;
-wire hdmi_rstn;
-
-    wire [4:0] RES_CONFIG = 5'b00001 ;
+wire hdmi_rstn = 1'b1;
 
     wire [7:0] DVI_RED;
     wire [7:0] DVI_GREEN;
@@ -49,15 +47,23 @@ wire hdmi_rstn;
     ///////////////////////////////////////////
     // clocks
 
-`define PIXEL_CLOCK_135 4'd3
-`define PIXEL_CLOCK_371_25 4'd2
-video_clock video_clock_inst (
-  .clk27       (clock), 
-  .clock_config(`PIXEL_CLOCK_371_25),
-  .rstn        (1'b1),
-  .hdmi_rstn_o (hdmi_rstn),
-  .clk_serial  (clk_serial),
-  .clk_pixel   (internal_clock)
+reg [4:0] curConfig;
+clockGen clockGen_inst(
+  .clkIn( clock ),
+  .rst( 1'b0 ),
+  .mode( curConfig ),
+  .modeClk( clock ),
+  .pxlClkx5( clk_serial ),
+  .pxlClk( internal_clock )
+);
+
+wire modeChange;
+modeButton modeButton_inst(
+  .clk( clock ),
+  .rst( 1'b0 ),
+  .buttonIn( button ),
+  .modeOut( curConfig ),
+  .modeChange( modeChange )
 );
 
 hdmi_device hdmi_device (
@@ -93,7 +99,7 @@ hdmi_device hdmi_device (
     // config
     configuration configuration(
         .clock(clock),
-        .config_in(RES_CONFIG),
+        .config_in(curConfig),
         .config_data(config_data),
         .config_changed(config_changed)
     );

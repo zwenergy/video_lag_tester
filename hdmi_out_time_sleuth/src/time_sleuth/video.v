@@ -23,29 +23,12 @@ module video(
     wire state;
     VideoMode videoMode;
 
-    assign videoMode = VIDEO_MODE_720P;//VIDEO_MODE_480P; //VIDEO_MODE_720P;
-/*
-  always @(posedge clock) begin
-        if (config_data[0])
-            videoMode <= VIDEO_MODE_720P;
-        else
-            videoMode<= VIDEO_MODE_480P;
-    end
-*/
-/*
-    video_config video_config(
-        .clock(clock),
-        .data_in(`MODE_720p ),
-        .videoMode(videoMode));
-*/
-
-/*
     video_config video_config(
         .clock(clock),
         .data_in(config_data),
         .videoMode(videoMode)
     );
-*/
+
     timingsgen timingsgen(
         .clock(clock),
         .videoMode(videoMode),

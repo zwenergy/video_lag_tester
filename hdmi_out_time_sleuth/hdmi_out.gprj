@@ -6,9 +6,9 @@
     <Device name="GW1NSR-4C" pn="GW1NSR-LV4CQN48PC6/I5">gw1nsr4c-000</Device>
     <FileList>
         <File path="src/fifo_hs/fifo_hs.v" type="file.verilog" enable="1"/>
-        <File path="src/gowin_dcs/gowin_dcs.v" type="file.verilog" enable="1"/>
-        <File path="src/gowin_pllvr_pll1/pll1.v" type="file.verilog" enable="1"/>
-        <File path="src/gowin_pllvr_pll2/pll2.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_dcs/gowin_dcs.v" type="file.verilog" enable="0"/>
+        <File path="src/gowin_pllvr_pll1/pll1.v" type="file.verilog" enable="0"/>
+        <File path="src/gowin_pllvr_pll2/pll2.v" type="file.verilog" enable="0"/>
         <File path="src/hdmi_device.v" type="file.verilog" enable="1"/>
         <File path="src/testpattern.v" type="file.verilog" enable="1"/>
         <File path="src/time_sleuth/char_rom/char_rom.v" type="file.verilog" enable="1"/>
@@ -31,9 +31,13 @@
         <File path="src/time_sleuth/video/video_config.v" type="file.verilog" enable="1"/>
         <File path="src/time_sleuth/video/videogen.v" type="file.verilog" enable="1"/>
         <File path="src/tmds_encoder.v" type="file.verilog" enable="1"/>
-        <File path="src/video_clock.v" type="file.verilog" enable="1"/>
-        <File path="src/video_timing.vh" type="file.verilog" enable="1"/>
+        <File path="src/video_clock.v" type="file.verilog" enable="0"/>
+        <File path="src/video_timing.vh" type="file.verilog" enable="0"/>
         <File path="src/video_top.v" type="file.verilog" enable="0"/>
+        <File path="src/clockGen.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/gowin_clkdiv_new/Gowin_CLKDIV5.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/gowin_pllvr_new/Gowin_PLLVR_dyn_r.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/modeButton.vhd" type="file.vhdl" enable="1"/>
         <File path="src/dk_video.cst" type="file.cst" enable="1"/>
         <File path="src/dk_video.sdc" type="file.sdc" enable="1"/>
         <File path="src/time_sleuth/char_rom/font/8x16-font-digits.v" type="file.other" enable="1"/>
